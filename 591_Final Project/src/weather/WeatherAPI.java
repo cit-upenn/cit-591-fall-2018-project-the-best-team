@@ -1,3 +1,4 @@
+package weather;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -10,7 +11,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class WeatherAPI {
-	public String makeAPICallCurrentWeather(String city, String key) throws IOException, JSONException {
+	public static String makeAPICallCurrentWeather(String city, String key) throws IOException, JSONException {
 		// can also change to city ID and ZIP 
 		String urlInit = "https://api.openweathermap.org/data/2.5/weather?q=";
 		String url = urlInit + city + "&APPID=" + key;
@@ -55,7 +56,7 @@ public class WeatherAPI {
 		pressure = jObj1.getInt("pressure");
 		
 		
-		res = "weather: " + description + "; temperature: " + temp + "; humidity: " +humidity + "%" + "; pressure: " +pressure;
+		res = "<br/>Weather: " + description + "<br/>Temperature: " + temp + " F"+ "<br/>Humidity: " +humidity + "%" + "<br/>Pressure: " +pressure+"<br/>";
 		
 		return res;
 	}

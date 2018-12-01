@@ -1,9 +1,9 @@
 package geocoding;
 
-public class LonLatObject {
+public class GeocodingObject {
 	double lon;
 	double lat;
-	LonLatObject(double lon,double lat){
+	GeocodingObject(double lon,double lat){
 		this.lon=lon;
 		this.lat=lat;
 	}

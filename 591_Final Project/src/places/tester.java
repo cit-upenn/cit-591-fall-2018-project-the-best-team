@@ -21,7 +21,7 @@ public class tester {
 		scan.close();
 		URL url=PlacesURLBuilder.urlBuilder(address,type,radius);
 		System.out.println(url);
-		ArrayList<PlacesObject> pArray=PlacesParser.setPlaces(url,address);
+		ArrayList<PlacesObject> pArray=PlacesParser.setPlaces(url);
 		for (int i=0;i<pArray.size();i++) {
 			System.out.println(pArray.get(i).getName());
 			System.out.println(pArray.get(i).getAddress());

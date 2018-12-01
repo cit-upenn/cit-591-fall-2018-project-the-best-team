@@ -1,5 +1,9 @@
 package directions;
-
+/**
+ * store trip info
+ * @author shengfeng
+ *
+ */
 public class DirectionsObject {
 	String origin;
 	String destination;

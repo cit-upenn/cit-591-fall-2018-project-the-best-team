@@ -1,3 +1,4 @@
+package flightAPI;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -6,7 +7,7 @@ import java.net.URLConnection;
 import java.util.ArrayList;
 
 public class AirportPreCheck {
-	public String makeAPICall(String airport, String url) throws IOException {
+	public static String makeAPICall(String airport, String url) throws IOException {
 		URL preCheck;
 		URLConnection yc;
 		BufferedReader in;
@@ -34,7 +35,7 @@ public class AirportPreCheck {
 			}
 		}
 		
-		return res;
+		return "Precheck required: "+res;
 	
 	}
 }

@@ -1,7 +1,11 @@
 package directions;
 import java.net.MalformedURLException;
 import java.net.URL;
-
+/**
+ * build url to make api call
+ * @author shengfeng
+ *
+ */
 public class DirectionsURLBuilder {
 	public static URL urlBuilder(String origin,String destination,String mode) throws MalformedURLException {
 		String key="AIzaSyCJg8XbSpe7nWqvgOJEOLANj2Nut2tY_34";

@@ -1,5 +1,9 @@
 package timeZone;
-
+/**
+ * contains time zone name and current local time
+ * @author shengfeng
+ *
+ */
 public class TimeZoneObject {
 	long dstOffset;
 	long rawOffset;

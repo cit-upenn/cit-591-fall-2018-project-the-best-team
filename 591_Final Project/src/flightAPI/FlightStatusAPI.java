@@ -1,3 +1,4 @@
+package flightAPI;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -16,7 +17,7 @@ import org.json.JSONObject;
 public class FlightStatusAPI {
 	
 	
-	public String makeAPICall(String airportCode, String typeFlight, String flightICAO) throws IOException, JSONException {
+	public static String makeAPICall(String airportCode, String typeFlight, String flightICAO) throws IOException, JSONException {
 		
 		String url = "http://aviation-edge.com/v2/public/timetable?key=";
 		String keyStatus = "82aebf-0173d3";
@@ -67,7 +68,7 @@ public class FlightStatusAPI {
 			if(jArray.getJSONObject(i).getJSONObject("flight").getString("icaoNumber").equals(flightICAO)) {
 				status = jArray.getJSONObject(i).getString("status");
 				scheduledTime = jArray.getJSONObject(i).getJSONObject("departure").getString("scheduledTime");
-				
+				scheduledTime=scheduledTime.substring(0, scheduledTime.length()-4);
 				if(status.equals("cancelled") || status.equals("unkonwn") || status.equals("incident") ) {
 					estimatedTime = "N/A";
 					arrivalAirportIATA =  "N/A";
@@ -79,11 +80,14 @@ public class FlightStatusAPI {
 				}
 				else {
 					estimatedTime = jArray.getJSONObject(i).getJSONObject("departure").getString("estimatedTime");
+					estimatedTime=estimatedTime.substring(0,estimatedTime.length()-4);
 					arrivalAirportIATA = jArray.getJSONObject(i).getJSONObject("arrival").getString("iataCode");
 					//arrivalTerminal = jArray.getJSONObject(i).getJSONObject("arrival").getString("terminal");
 					//arrivalGate = jArray.getJSONObject(i).getJSONObject("arrival").getString("gate");
 					arrivalScheduledTime = jArray.getJSONObject(i).getJSONObject("arrival").getString("scheduledTime");
+					arrivalScheduledTime=arrivalScheduledTime.substring(0, arrivalScheduledTime.length()-4);
 					arrivalEstimatedTime = jArray.getJSONObject(i).getJSONObject("arrival").getString("estimatedTime");
+					arrivalEstimatedTime=arrivalEstimatedTime.substring(0, arrivalEstimatedTime.length()-4);
 					airLine = jArray.getJSONObject(i).getJSONObject("airline").getString("name");
 				}
 				
@@ -91,9 +95,9 @@ public class FlightStatusAPI {
 		}
 		
 	
-		res = "Status: " + status + " scheduledTime: " + scheduledTime + " estimatedTime: " + estimatedTime + " arrivalAirportIATA: "
-				+ arrivalAirportIATA + " arrivalScheduledTime: " + arrivalScheduledTime + " arrivalEstimatedTime: " + arrivalEstimatedTime  
-				+ " airLine: "+ airLine;
+		res = "Status: " + status + "<br/>Scheduled Time: " + scheduledTime + "<br/>Estimated Time: " + estimatedTime + "<br/>Arrival Airport IATA: "
+				+ arrivalAirportIATA + "<br/>Arrival Scheduled Time: " + arrivalScheduledTime + "<br/>Arrival Estimated Time: " + arrivalEstimatedTime  
+				+ "<br/>Airline: "+ airLine + "<br/>";
 		
 		return res;
 		

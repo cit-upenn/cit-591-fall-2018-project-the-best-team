@@ -8,7 +8,11 @@ import java.net.URLConnection;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
+/**
+ * parse directions object
+ * @author shengfeng
+ *
+ */
 public class DirectionsParser {
 	public static DirectionsObject setJsonDirections (URL directions) throws IOException, JSONException {
 		URLConnection yc=directions.openConnection();

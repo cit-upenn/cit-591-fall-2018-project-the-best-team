@@ -14,10 +14,14 @@ import org.json.JSONObject;
 import directions.DirectionsObject;
 import directions.DirectionsParser;
 import directions.DirectionsURLBuilder;
-import geocoding.LonLatObject;
-
+import geocoding.GeocodingObject;
+/**
+ * parse places object
+ * @author shengfeng
+ *
+ */
 public class PlacesParser {
-	public static ArrayList<PlacesObject> setPlaces (URL url,String address) throws IOException, JSONException {
+	public static ArrayList<PlacesObject> setPlaces (URL url) throws IOException, JSONException {
 		URLConnection yc=url.openConnection();
 		BufferedReader in=new BufferedReader(new InputStreamReader(yc.getInputStream()));
 		String inputLine;

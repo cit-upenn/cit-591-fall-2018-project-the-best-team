@@ -13,8 +13,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import geocoding.LonLatObject;
-
+import geocoding.GeocodingObject;
+/**
+ * parse time zone object
+ * @author shengfeng
+ *
+ */
 public class TimeZoneParser {
 	public static TimeZoneObject setTimeZone (URL url) throws IOException, JSONException {
 		URLConnection yc=url.openConnection();

@@ -16,7 +16,7 @@ public class tester {
 		scan.close();
 		URL url=GeocodingURLBuilder.urlBuilder(address);
 		System.out.println(url);
-		LonLatObject d=GeocodingParser.setLonLat(url);
+		GeocodingObject d=GeocodingParser.setLonLat(url);
 		System.out.println(d.getLon());
 		System.out.println(d.getLat());
 

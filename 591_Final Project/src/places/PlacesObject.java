@@ -1,5 +1,9 @@
 package places;
-
+/**
+ * object that contains info about places
+ * @author shengfeng
+ *
+ */
 public class PlacesObject {
 	String name;
 	boolean openNow;

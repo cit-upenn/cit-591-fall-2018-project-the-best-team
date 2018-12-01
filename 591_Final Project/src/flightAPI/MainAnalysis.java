@@ -1,6 +1,9 @@
+package flightAPI;
 import java.io.IOException;
 
 import org.json.JSONException;
+
+import weather.WeatherAPI;
 
 public class MainAnalysis {
 	public static void main(String[] args) throws JSONException {
@@ -9,10 +12,9 @@ public class MainAnalysis {
 		String airportCode = "JFK";
 		String typeFlight = "departure";
 		String flightICAO = "KLM5518";
-		FlightStatusAPI test = new FlightStatusAPI();
 
 		try {
-			System.out.println(test.makeAPICall(airportCode, typeFlight, flightICAO));
+			System.out.println(FlightStatusAPI.makeAPICall(airportCode, typeFlight, flightICAO));
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -20,11 +22,10 @@ public class MainAnalysis {
 
 		
 		// pre-check api 
-		AirportPreCheck pre = new AirportPreCheck();
 		String desiredAirport = "Chicago";
 		String APIAddress = "https://www.tsa.gov/data/apcp.xml";
 		try {
-			System.out.println(pre.makeAPICall(desiredAirport, APIAddress));
+			System.out.println(AirportPreCheck.makeAPICall(desiredAirport, APIAddress));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -32,12 +33,11 @@ public class MainAnalysis {
 		
 		
 		// weather api 
-		WeatherAPI weather = new WeatherAPI();
 		String desiredCity = "New York";
 		String keyWeather = "b19e295b4bbeda7931adb202d826296d";
 		
 		try {
-			System.out.println(weather.makeAPICallCurrentWeather(desiredCity, keyWeather));
+			System.out.println(WeatherAPI.makeAPICallCurrentWeather(desiredCity, keyWeather));
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (JSONException e) {

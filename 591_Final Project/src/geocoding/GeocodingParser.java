@@ -11,9 +11,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import directions.DirectionsObject;
+/**
+ * parse geocoding object
+ * @author shengfeng
+ *
+ */
 
 public class GeocodingParser {
-	public static LonLatObject setLonLat (URL geocodingURL) throws IOException, JSONException {
+	public static GeocodingObject setLonLat (URL geocodingURL) throws IOException, JSONException {
 		URLConnection yc=geocodingURL.openConnection();
 		BufferedReader in=new BufferedReader(new InputStreamReader(yc.getInputStream()));
 		String inputLine;
@@ -33,7 +38,7 @@ public class GeocodingParser {
 		location=geometry.getJSONObject("location");
 		double lon=location.getDouble("lng");
 		double lat=location.getDouble("lat");
-		LonLatObject d=new LonLatObject(lon,lat);
+		GeocodingObject d=new GeocodingObject(lon,lat);
 		return d;
 	}
 }
