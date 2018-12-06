@@ -11,7 +11,7 @@ public class MainAnalysis {
 		// flight status api 
 		String airportCode = "JFK";
 		String typeFlight = "departure";
-		String flightICAO = "KLM5518";
+		String flightICAO = "ASA4285";
 
 		try {
 			System.out.println(FlightStatusAPI.makeAPICall(airportCode, typeFlight, flightICAO));

@@ -13,8 +13,7 @@ import org.json.JSONObject;
 public class WeatherAPI {
 	public static String makeAPICallCurrentWeather(String city, String key) throws IOException, JSONException {
 		// can also change to city ID and ZIP 
-		String urlInit = "https://api.openweathermap.org/data/2.5/weather?q=";
-		String url = urlInit + city + "&APPID=" + key;
+		String url = getURL(city, key);
 		
 		URL weatherCon;
 		URLConnection yc;
@@ -59,5 +58,11 @@ public class WeatherAPI {
 		res = "<br/>Weather: " + description + "<br/>Temperature: " + temp + " F"+ "<br/>Humidity: " +humidity + "%" + "<br/>Pressure: " +pressure+"<br/>";
 		
 		return res;
+	}
+	
+	public static String getURL(String city, String key) {
+		String urlInit = "https://api.openweathermap.org/data/2.5/weather?q=";
+		String url = urlInit + city + "&APPID=" + key;
+		return url;
 	}
 }

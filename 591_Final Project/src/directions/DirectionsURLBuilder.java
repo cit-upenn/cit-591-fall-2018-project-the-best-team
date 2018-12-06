@@ -21,4 +21,5 @@ public class DirectionsURLBuilder {
 				+"&departure_time=now&key="+key);
 		return googleDirection;
 	}
+	
 }

@@ -19,15 +19,7 @@ public class FlightStatusAPI {
 	
 	public static String makeAPICall(String airportCode, String typeFlight, String flightICAO) throws IOException, JSONException {
 		
-		String url = "http://aviation-edge.com/v2/public/timetable?key=";
-		String keyStatus = "82aebf-0173d3";
-		String argument = "&iataCode=";
-		String airport = airportCode;
-		String argument1 = "&type=";
-		String type = typeFlight;
-		String urlKey = url + keyStatus + argument + airport + argument1 + type; 
-
-
+		String urlKey = getURL(airportCode, typeFlight); 
 		URL flightStatus;
 		URLConnection yc;
 		BufferedReader in;
@@ -79,15 +71,35 @@ public class FlightStatusAPI {
 					airLine =  "N/A";
 				}
 				else {
-					estimatedTime = jArray.getJSONObject(i).getJSONObject("departure").getString("estimatedTime");
-					estimatedTime=estimatedTime.substring(0,estimatedTime.length()-4);
+					try{
+						estimatedTime = jArray.getJSONObject(i).getJSONObject("departure").getString("estimatedTime");
+						estimatedTime= estimatedTime.substring(0,estimatedTime.length()-4);
+					}
+					catch(org.json.JSONException e) {
+						estimatedTime = "Not known yet";
+					}
 					arrivalAirportIATA = jArray.getJSONObject(i).getJSONObject("arrival").getString("iataCode");
-					//arrivalTerminal = jArray.getJSONObject(i).getJSONObject("arrival").getString("terminal");
-					//arrivalGate = jArray.getJSONObject(i).getJSONObject("arrival").getString("gate");
+					try {
+						arrivalTerminal = jArray.getJSONObject(i).getJSONObject("arrival").getString("terminal");
+					}
+					catch(org.json.JSONException e) {
+						arrivalTerminal = "Not known yet";
+					}
+					try {
+						arrivalGate = jArray.getJSONObject(i).getJSONObject("arrival").getString("gate");
+					}
+					catch(org.json.JSONException e) {
+						arrivalGate = "Not known yet";
+					}
 					arrivalScheduledTime = jArray.getJSONObject(i).getJSONObject("arrival").getString("scheduledTime");
 					arrivalScheduledTime=arrivalScheduledTime.substring(0, arrivalScheduledTime.length()-4);
-					arrivalEstimatedTime = jArray.getJSONObject(i).getJSONObject("arrival").getString("estimatedTime");
-					arrivalEstimatedTime=arrivalEstimatedTime.substring(0, arrivalEstimatedTime.length()-4);
+					try{
+						arrivalEstimatedTime = jArray.getJSONObject(i).getJSONObject("arrival").getString("estimatedTime");
+						arrivalEstimatedTime=arrivalEstimatedTime.substring(0, arrivalEstimatedTime.length()-4);
+					}			
+					catch(org.json.JSONException e) {
+						arrivalEstimatedTime = "Not known yet";
+					}
 					airLine = jArray.getJSONObject(i).getJSONObject("airline").getString("name");
 				}
 				
@@ -103,6 +115,14 @@ public class FlightStatusAPI {
 		
 	}
 	
-
-	
+	public static String getURL(String airportCode, String typeFlight) {
+		String url = "http://aviation-edge.com/v2/public/timetable?key=";
+		String keyStatus = "82aebf-0173d3";
+		String argument = "&iataCode=";
+		String airport = airportCode;
+		String argument1 = "&type=";
+		String type = typeFlight;
+		String urlKey = url + keyStatus + argument + airport + argument1 + type;
+		return urlKey; 
+	}
 }
