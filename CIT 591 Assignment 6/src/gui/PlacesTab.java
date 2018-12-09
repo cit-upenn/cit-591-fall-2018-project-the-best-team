@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.Button;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -44,7 +45,7 @@ public class PlacesTab {
 		JLabel label2=new JLabel();
 		label2.setText("Radius in ft:");
 		panel.add(label2);
-		text2=new JTextField(10); 
+		text2=new JTextField(8); 
 		panel.add(text2);
 		types=new JComboBox();
 		types.addItem("airport");
@@ -82,16 +83,18 @@ public class PlacesTab {
 				try {
 					url = PlacesURLBuilder.urlBuilder(currentLocation, type, Double.parseDouble(radius));
 				} catch (NumberFormatException | IOException | JSONException e2) {
-					// TODO Auto-generated catch block
-					e2.printStackTrace();
+					result="No result found.";
+					info.setText(result);
+					return;
 				}
 				
 				ArrayList<PlacesObject> pArray=new ArrayList<>();;
 				try {
 					pArray = PlacesParser.setPlaces(url);
 				} catch (IOException | JSONException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+					result="No result found.";
+					info.setText(result);
+					return;
 				}
 				for (int i=0;i<pArray.size();i++) {
 					result=result+"Name: "+pArray.get(i).getName()+"<br/>";

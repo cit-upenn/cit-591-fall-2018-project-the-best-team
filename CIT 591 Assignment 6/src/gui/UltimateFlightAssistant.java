@@ -23,7 +23,7 @@ import flightAPI.FlightStatusAPI;
  * @author shengfeng
  *
  */
-public class MainGUI extends JFrame {
+public class UltimateFlightAssistant extends JFrame {
 
 	public static void buildMainMenu(JFrame frame) {
 	  frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -48,7 +48,7 @@ public class MainGUI extends JFrame {
 
   	  frame.setContentPane(tabs);
   	  frame.setVisible(true);
-  	  frame.setSize(800, 600);
+  	  frame.setSize(800, 700);
 	}
 	public static void main(String[] args) {
 		

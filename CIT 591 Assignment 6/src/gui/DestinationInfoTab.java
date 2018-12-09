@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.Button;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -37,6 +38,7 @@ public class DestinationInfoTab {
 		panel.add(text1);
 		
 		info=new JLabel();
+		info.setPreferredSize(new Dimension(500,300));
 
 		createButtonAndListener(panel);
 		panel.add(info);
@@ -59,15 +61,17 @@ public class DestinationInfoTab {
 				try {
 					timeZoneURL=TimeZoneURLBuilder.urlBuilder(destination);
 				} catch (IOException | JSONException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+					result="No result found.";
+					info.setText(result);
+					return;
 				}
 				TimeZoneObject t=new TimeZoneObject();
 				try {
 					t=TimeZoneParser.setTimeZone(timeZoneURL);
 				} catch (IOException | JSONException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+					result="No result found.";
+					info.setText(result);
+					return;
 				}
 				result=result+"Local time: "+t.getLocalTime()+"<br/>";
 				result=result+"Time Zone: "+t.getTimeZoneName()+"<br/>";
@@ -76,8 +80,9 @@ public class DestinationInfoTab {
 				try {
 					result=result+WeatherAPI.makeAPICallCurrentWeather(destination,keyWeather)+"<html>";
 				} catch (IOException | JSONException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+					result="No result found.";
+					info.setText(result);
+					return;
 				}
 				
 

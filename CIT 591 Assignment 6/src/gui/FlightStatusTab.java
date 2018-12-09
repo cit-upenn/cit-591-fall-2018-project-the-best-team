@@ -69,8 +69,9 @@ public class FlightStatusTab {
 				try {
 					result=result+FlightStatusAPI.makeAPICall(iata, type, icao);
 				} catch (IOException | JSONException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+					result="No result found.";
+					info.setText(result);
+					return;
 				}
 				
 
@@ -79,8 +80,9 @@ public class FlightStatusTab {
 				try {
 					result=result+AirportPreCheck.makeAPICall(iata, preCheckURL);
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+					result="No result found.";
+					info.setText(result);
+					return;
 				}
 				
 				result=result+"<html>";

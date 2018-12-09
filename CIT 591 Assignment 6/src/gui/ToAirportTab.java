@@ -73,15 +73,17 @@ public class ToAirportTab {
 				try {
 					url = DirectionsURLBuilder.urlBuilder(currentLocation,airport,mode);
 				} catch (MalformedURLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+					result="No result found.";
+					info.setText(result);
+					return;
 				}
 				DirectionsObject d=new DirectionsObject();
 				try {
 					d=DirectionsParser.setJsonDirections(url);
 				} catch (IOException | JSONException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+					result="No result found.";
+					info.setText(result);
+					return;
 				}
 				info.setText("<html>"+"Origin: "+d.getOrigin()
 				+"<br/>"+"Destination: "+d.getDestination()+
