@@ -1,5 +1,9 @@
 package geocoding;
-
+/**
+ * this class implements GeocodingObject 
+ * @author zhenyan
+ *
+ */
 public class GeocodingObject {
 	double lon;
 	double lat;

@@ -8,7 +8,11 @@ import java.util.Scanner;
 import org.json.JSONException;
 
 
-
+/**
+ * this class tests the functionality of the APIs
+ * @author zhenyan
+ *
+ */
 public class tester {
 	public static void main(String[] args) throws IOException, JSONException {
 		System.out.println("please type address");

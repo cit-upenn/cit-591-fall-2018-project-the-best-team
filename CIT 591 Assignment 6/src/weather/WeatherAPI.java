@@ -9,7 +9,11 @@ import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
+/**
+ * this class implements the weatherAPI
+ * @author zhenyan
+ *
+ */
 public class WeatherAPI {
 	public static String makeAPICallCurrentWeather(String city, String key) throws IOException, JSONException {
 		// can also change to city ID and ZIP 

@@ -22,7 +22,11 @@ import timeZone.TimeZoneObject;
 import timeZone.TimeZoneParser;
 import timeZone.TimeZoneURLBuilder;
 import weather.WeatherAPI;
-
+/**
+ * this class implments the Destination info tab 
+ * @author zhenyan
+ *
+ */
 public class DestinationInfoTab {
 	static String destination;
 

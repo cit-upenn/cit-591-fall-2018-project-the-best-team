@@ -5,7 +5,11 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
-
+/**
+ * This class implements the Airport Pre-check API. 
+ * @author zhenyan
+ *
+ */
 public class AirportPreCheck {
 	public static String makeAPICall(String airport, String url) throws IOException {
 		URL preCheck;

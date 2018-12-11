@@ -4,7 +4,11 @@ import java.io.IOException;
 import org.json.JSONException;
 
 import weather.WeatherAPI;
-
+/**
+ * this class calls the 2 APIs and tests their functionality. 
+ * @author zhenyan
+ *
+ */
 public class MainAnalysis {
 	public static void main(String[] args) throws JSONException {
 	

@@ -13,7 +13,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-
+/**
+ * This class implements the flight status API. 
+ * @author zhenyan
+ *
+ */
 public class FlightStatusAPI {
 	
 	
@@ -117,7 +121,7 @@ public class FlightStatusAPI {
 	
 	public static String getURL(String airportCode, String typeFlight) {
 		String url = "http://aviation-edge.com/v2/public/timetable?key=";
-		String keyStatus = "82aebf-0173d3";
+		String keyStatus = "5a5d14-43f0a9";
 		String argument = "&iataCode=";
 		String airport = airportCode;
 		String argument1 = "&type=";
